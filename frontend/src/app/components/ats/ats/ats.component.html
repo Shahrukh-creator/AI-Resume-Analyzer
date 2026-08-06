@@ -1,0 +1,37 @@
+<div class="container">
+
+    <mat-card>
+
+        <h2>
+
+            ATS Resume Analysis
+
+        </h2>
+
+        <button mat-raised-button color="primary" (click)="analyzeResume()">
+
+            Analyze Resume
+
+        </button>
+
+        <div class="result" *ngIf="analysis">
+
+            <div class="spinner" *ngIf="loading">
+
+                <mat-spinner diameter="50"></mat-spinner>
+
+                <p>Analyzing resume...</p>
+
+            </div>
+
+            <div class="result" *ngIf="analysis && !loading">
+
+                {{ analysis }}
+
+            </div>
+
+        </div>
+
+    </mat-card>
+
+</div>

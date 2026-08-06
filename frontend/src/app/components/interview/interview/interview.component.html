@@ -1,0 +1,38 @@
+<div class="container">
+
+    <mat-card>
+
+        <h2>AI Interview Questions</h2>
+
+        <mat-form-field appearance="outline" class="full-width">
+
+            <mat-label>Job Description</mat-label>
+
+            <textarea matInput rows="12" [(ngModel)]="jobDescription">
+            </textarea>
+
+        </mat-form-field>
+
+        <button mat-raised-button color="primary" (click)="generateQuestions()">
+
+            Generate Questions
+
+        </button>
+
+        <div class="spinner" *ngIf="loading">
+
+            <mat-spinner diameter="50"></mat-spinner>
+
+            <p>Generating interview questions...</p>
+
+        </div>
+
+        <div class="result" *ngIf="questions && !loading">
+
+            {{ questions }}
+
+        </div>
+
+    </mat-card>
+
+</div>

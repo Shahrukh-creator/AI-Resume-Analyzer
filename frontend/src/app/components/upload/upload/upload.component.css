@@ -1,0 +1,19 @@
+.container{
+
+    width:600px;
+
+    margin:40px auto;
+
+}
+
+mat-card{
+
+    padding:30px;
+
+}
+
+button{
+
+    margin-top:20px;
+
+}

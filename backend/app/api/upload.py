@@ -1,19 +1,24 @@
 from fastapi import APIRouter, UploadFile, File
-import shutil
 import os
+import shutil
 
 from app.services.pdf_service import PDFService
-from app.services.embedding_service import EmbeddingService
-from app.services.vector_store_service import VectorStoreService
+from app.core.dependencies import (
+    embedding_service,
+    vector_service
+)
 
-router = APIRouter(prefix="/api", tags=["PDF"])
+router = APIRouter(
+    prefix="/api",
+    tags=["Resume"]
+)
 
 pdf_service = PDFService()
-embedding_service = EmbeddingService()
+
 
 
 @router.post("/upload")
-async def upload_pdf(file: UploadFile = File(...)):
+async def upload_resume(file: UploadFile = File(...)):
 
     os.makedirs("uploads", exist_ok=True)
 
@@ -26,12 +31,8 @@ async def upload_pdf(file: UploadFile = File(...)):
 
     chunks = embedding_service.split_documents(documents)
 
-    vector_service = VectorStoreService(
-        embedding_service.get_embedding_model()
-    )
-
     vector_service.create_vector_store(chunks)
 
     return {
-        "message": "PDF Uploaded Successfully"
+        "message": "Resume uploaded successfully."
     }

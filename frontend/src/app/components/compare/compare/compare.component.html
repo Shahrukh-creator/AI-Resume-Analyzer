@@ -1,0 +1,39 @@
+<div class="container">
+
+    <mat-card>
+
+        <h2>Resume vs Job Description</h2>
+
+        <mat-form-field appearance="outline" class="full-width">
+
+            <mat-label>Job Description</mat-label>
+
+            <textarea matInput rows="12" [(ngModel)]="jobDescription">
+
+            </textarea>
+
+        </mat-form-field>
+
+        <button mat-raised-button color="primary" (click)="compareResume()">
+
+            Compare Resume
+
+        </button>
+
+        <div class="spinner" *ngIf="loading">
+
+            <mat-spinner diameter="50"></mat-spinner>
+
+            <p>Comparing resume...</p>
+
+        </div>
+
+        <div class="result" *ngIf="comparison && !loading">
+
+            {{ comparison }}
+
+        </div>
+
+    </mat-card>
+
+</div>

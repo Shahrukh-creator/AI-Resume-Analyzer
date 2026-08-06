@@ -1,0 +1,40 @@
+.container {
+
+    width: 90%;
+    max-width: 1200px;
+
+    margin: 40px auto;
+
+    text-align: center;
+
+}
+
+.subtitle {
+
+    color: gray;
+
+    margin-bottom: 40px;
+
+}
+
+.cards {
+
+    display: grid;
+
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+
+    gap: 20px;
+
+}
+
+mat-card {
+
+    padding: 20px;
+
+}
+
+button {
+
+    margin-top: 20px;
+
+}

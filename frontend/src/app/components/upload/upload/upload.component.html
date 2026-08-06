@@ -1,0 +1,44 @@
+<div class="container">
+
+    <mat-card>
+
+        <h2>Upload Resume</h2>
+
+        <input
+
+            type="file"
+
+            accept=".pdf"
+
+            (change)="onFileSelected($event)">
+
+        <br><br>
+
+        <button
+    mat-raised-button
+    color="primary"
+    (click)="uploadResume()"
+    [disabled]="uploading">
+
+    Upload Resume
+
+</button>
+<div
+    class="spinner"
+    *ngIf="uploading">
+
+    <mat-spinner diameter="50"></mat-spinner>
+
+    <p>Uploading resume...</p>
+
+</div>
+
+        <p>
+
+            {{ message }}
+
+        </p>
+
+    </mat-card>
+
+</div>

@@ -1,0 +1,43 @@
+.title{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    font-size:22px;
+
+    font-weight:600;
+
+}
+
+.spacer{
+
+    flex:1;
+
+}
+
+a{
+
+    color:white;
+
+    text-decoration:none;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:6px;
+
+}
+
+mat-toolbar{
+
+    position:sticky;
+
+    top:0;
+
+    z-index:1000;
+
+}
