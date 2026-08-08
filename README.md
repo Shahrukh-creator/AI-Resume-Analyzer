@@ -4,51 +4,47 @@ An AI-powered Resume Analyzer built using FastAPI, LangChain, embeddings, Chroma
 
 The application allows users to upload a resume and perform AI-powered analysis.
 
-# Features
+## Features
 
-Resume PDF upload
-PDF text extraction
-Resume document chunking
-Embedding generation
-Vector storage
-Resume summary generation
-ATS analysis
-Job description comparison
-Interview question generation
-Architecture
+* Resume PDF upload
+* PDF text extraction
+* Resume document chunking
+* Embedding generation
+* Vector storage
+* Resume summary generation
+* ATS analysis
+* Job description comparison
+* Interview question generation
 
-                  Resume PDF
-                      │
-                      ▼
-                Upload API
-                      │
-                      ▼
-                PDF Service
-                      │
-                      ▼
-              Document Chunks
-                      │
-                      ▼
-              Embedding Service
-                      │
-                      ▼
-                  ChromaDB
-                      │
-          ┌───────────┼────────────┐
-          │           │            │
-          ▼           ▼            ▼
-       Summary       ATS       Comparison
-          │           │            │
-          └───────────┼────────────┘
-                      │
-                      ▼
-                     LLM
-                      │
-                      ▼
-                AI Response
+## Architecture
 
-# Backend Structure
+```mermaid
+graph TD
+    PDF[Resume PDF] --> API[Upload API]
+    API --> PDFSvc[PDF Service]
+    PDFSvc --> Chunks[Document Chunks]
+    Chunks --> Embed[Embedding Service]
+    Embed --> DB[(ChromaDB)]
 
+    %% Branching to different analysis tasks
+    DB --> Sum[Summary]
+    DB --> ATS[ATS]
+    DB --> Comp[Comparison]
+
+    %% Merging into LLM processing
+    Sum --> LLM[LLM]
+    ATS --> LLM
+    Comp --> LLM
+
+    LLM --> Out[AI Response]
+
+    %% Styling to group Database
+    style DB fill:#f9f,stroke:#333,stroke-width:2px
+```
+
+## Backend Structure
+
+```text
 backend/
 │
 ├── app/
@@ -84,38 +80,38 @@ backend/
 ├── uploads/
 ├── .env
 └── requirements.txt
+```
 
+## API Endpoints
 
-# API Endpoints
-
-# Upload Resume
-POST /api/upload
+### Upload Resume
+`POST /api/upload`
 
 Uploads a resume PDF and creates its vector representation.
 
-# Resume Summary
-GET /api/summary
+### Resume Summary
+`GET /api/summary`
 
 Generates an AI-powered summary of the uploaded resume.
 
-# ATS Analysis
-GET /api/ats
+### ATS Analysis
+`GET /api/ats`
 
 Analyzes the resume from an ATS/recruiter perspective.
 
-# Job Description Comparison
-POST /api/compare
+### Job Description Comparison
+`POST /api/compare`
 
 Compares the uploaded resume against a supplied job description.
 
-Example request:
-
+**Example Request:**
+```json
 {
   "job_description": "Looking for a Python developer with FastAPI, REST API and SQL experience."
 }
+```
 
-
-# Interview Questions
-POST /api/interview
+### Interview Questions
+`POST /api/interview`
 
 Generates interview questions based on the resume and job description.
