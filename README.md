@@ -49,6 +49,7 @@ Architecture
 
 # Backend Structure
 
+
 backend/
 │
 ├── app/
@@ -84,6 +85,7 @@ backend/
 ├── uploads/
 ├── .env
 └── requirements.txt
+
 
 
 # API Endpoints
